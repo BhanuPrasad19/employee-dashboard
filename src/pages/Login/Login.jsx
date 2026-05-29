@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { validateLogin } from '../../utils/validations'
 import './Login.css'
 
 const Login = () => {
@@ -35,19 +36,24 @@ const Login = () => {
   }
 
   const handleSubmit = e => {
-    e.preventDefault()
+  e.preventDefault()
 
-    if (validateForm()) {
-      const userData = {
-        ...formData,
-        loginTime: new Date().toISOString(),
-      }
+  const validationErrors =
+    validateLogin(formData)
 
-      localStorage.setItem('murataUser', JSON.stringify(userData))
+  setErrors(validationErrors)
 
-      navigate('/dashboard')
-    }
+  if (
+    Object.keys(validationErrors).length === 0
+  ) {
+    localStorage.setItem(
+      'user',
+      JSON.stringify(formData)
+    )
+
+    navigate('/dashboard')
   }
+}
    return (
     <div className='login-container'>
       <form className='login-form' onSubmit={handleSubmit}>

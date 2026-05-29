@@ -5,7 +5,8 @@ const defaultImage =
   'https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1400&auto=format&fit=crop'
 
 const Home = () => {
-  const user = JSON.parse(localStorage.getItem('user'))
+  const user =
+  JSON.parse(localStorage.getItem('user')) || {}
 
   const [media, setMedia] = useState(
     localStorage.getItem('media') || defaultImage
@@ -32,7 +33,7 @@ const Home = () => {
     >
       <div className='overlay'>
         <h1>
-          Welcome to {user?.name}
+          Welcome to {user?.name || 'User'}
         </h1>
 
         <input
