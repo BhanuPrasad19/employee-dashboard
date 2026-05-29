@@ -1,39 +1,45 @@
 import { useState } from 'react'
 import './Home.css'
 
+const defaultImage =
+  'https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1400&auto=format&fit=crop'
+
 const Home = () => {
-  const user = JSON.parse(localStorage.getItem('murataUser'))
+  const user = JSON.parse(localStorage.getItem('user'))
 
   const [media, setMedia] = useState(
-    localStorage.getItem('homeMedia') || ''
+    localStorage.getItem('media') || defaultImage
   )
 
-  const handleMediaUpload = e => {
-    const file = e.target.files[0]
+  const handleMediaUpload = event => {
+    const file = event.target.files[0]
 
-    if (file) {
-      const reader = new FileReader()
+    if (!file) return
 
-      reader.onloadend = () => {
-        setMedia(reader.result)
-        localStorage.setItem('homeMedia', reader.result)
-      }
+    const imageUrl = URL.createObjectURL(file)
 
-      reader.readAsDataURL(file)
-    }
+    setMedia(imageUrl)
+
+    localStorage.setItem('media', imageUrl)
   }
 
   return (
     <div
       className='home-container'
-      // style={{
-      //   backgroundImage: `url(${media})`,
-      // }}
+      style={{
+        backgroundImage: `url(${media})`,
+      }}
     >
       <div className='overlay'>
-        <h1>Welcome to {user?.name}</h1>
+        <h1>
+          Welcome to {user?.name}
+        </h1>
 
-        <input type='file' onChange={handleMediaUpload} />
+        <input
+          type='file'
+          accept='image/*'
+          onChange={handleMediaUpload}
+        />
       </div>
     </div>
   )
