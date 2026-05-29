@@ -1,0 +1,23 @@
+.sidebar {
+  width: 230px;
+  background: #1d2671;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sidebar button {
+  padding: 14px;
+  border-radius: 10px;
+  background: transparent;
+  color: white;
+  text-align: left;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.sidebar button:hover,
+.sidebar .active {
+  background: rgba(255, 255, 255, 0.18);
+}

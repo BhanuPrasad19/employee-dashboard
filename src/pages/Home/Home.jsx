@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import './Home.css'
 
 const Home = () => {
   const user = JSON.parse(localStorage.getItem('murataUser'))
@@ -25,9 +26,9 @@ const Home = () => {
   return (
     <div
       className='home-container'
-      style={{
-        backgroundImage: `url(${media})`,
-      }}
+      // style={{
+      //   backgroundImage: `url(${media})`,
+      // }}
     >
       <div className='overlay'>
         <h1>Welcome to {user?.name}</h1>

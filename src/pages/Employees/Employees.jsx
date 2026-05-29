@@ -5,7 +5,7 @@ import {
   formatDate,
 } from '../../utils/formatters'
 
-import './Employees'
+import './Employees.css'
 
 const Employees = () => {
   const [employees, setEmployees] = useState(() => {

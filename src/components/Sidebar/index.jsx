@@ -1,3 +1,4 @@
+import './Sidebar.css'
 const Sidebar = ({ activeMenu, setActiveMenu }) => {
   return (
     <aside className='sidebar'>

@@ -3,6 +3,7 @@ import Header from '../../components/Header/Header'
 import Sidebar from '../../components/Sidebar/index'
 import Home from '../Home/Home'
 import Employees from '../Employees/Employees'
+import './Dashboard.css'
 
 const Dashboard = () => {
   const [activeMenu, setActiveMenu] = useState('home')
