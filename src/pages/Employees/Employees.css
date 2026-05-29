@@ -1,0 +1,14 @@
+.distance-blink {
+  animation: blinkAnimation 0.5s linear infinite;
+}
+
+@keyframes blinkAnimation {
+  50% {
+    opacity: 0;
+  }
+}
+
+.distance-alert {
+  color: red;
+  font-weight: bold;
+}
